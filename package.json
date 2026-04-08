@@ -1,0 +1,22 @@
+{
+  "name": "node_js_webrtc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google-cloud/vision": "^5.3.5",
+    "axios": "^1.14.0",
+    "express": "^5.2.1",
+    "multer": "^2.1.1",
+    "node-tesseract-ocr": "^2.2.1",
+    "nodemon": "^3.1.14",
+    "sharp": "^0.34.5",
+    "socket.io": "^4.8.3",
+    "tesseract.js": "^7.0.0"
+  }
+}
