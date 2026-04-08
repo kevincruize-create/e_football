@@ -21,12 +21,16 @@ const upload = multer({
 //const sequenceVar = 'Counter Football FC'; // or 'Kevin Team'
 
 
-//check_all(array, sequenceVar)
+// 🔐 Ensure credentials exist (FAIL FAST)
+if (!process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
+  throw new Error("Missing GOOGLE_APPLICATION_CREDENTIALS_JSON");
+}
+
 const credentials = JSON.parse(
   process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON
 );
 
-// 🔑 FIX PRIVATE KEY FORMATTING
+// 🔑 Fix private key formatting
 credentials.private_key = credentials.private_key.replace(/\\n/g, '\n');
 
 const client = new vision.ImageAnnotatorClient({
