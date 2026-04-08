@@ -23,7 +23,7 @@ const upload = multer({
 
 //check_all(array, sequenceVar)
 const client = new vision.ImageAnnotatorClient({
-  keyFilename: path.join(__dirname, 'fifa.json'),
+  credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON),
 });
 
 app.post("/upload", upload.single("image"), async (req, res) => {
