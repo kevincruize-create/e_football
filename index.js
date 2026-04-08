@@ -22,8 +22,15 @@ const upload = multer({
 
 
 //check_all(array, sequenceVar)
+const credentials = JSON.parse(
+  process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON
+);
+
+// 🔑 FIX PRIVATE KEY FORMATTING
+credentials.private_key = credentials.private_key.replace(/\\n/g, '\n');
+
 const client = new vision.ImageAnnotatorClient({
-  credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON),
+  credentials,
 });
 
 app.post("/upload", upload.single("image"), async (req, res) => {
