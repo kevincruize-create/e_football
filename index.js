@@ -13,10 +13,6 @@ const server = http.createServer(app);
 //const array = ['Jay', 'FC','2', '58', 'Kevin', 'Team'];
 
 const multer = require("multer");
-
-
-
-
 // ---- MULTER SETUP (memory storage) ----
 const upload = multer({
   storage: multer.memoryStorage(), // no disk storage needed
