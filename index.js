@@ -26,7 +26,7 @@ const credentials = JSON.parse(rawData);             // 🔹 parse JSON
 // Create Vision client
 const client = new vision.ImageAnnotatorClient({ credentials });
 
-console.log("Loaded Google service account:", credentials.private_key);
+console.log("Loaded Google service account:", credentials.project_id);
 
 app.post("/upload", upload.single("image"), async (req, res) => {
   try {
