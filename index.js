@@ -24,9 +24,15 @@ const upload = multer({
 
 
 
-const client = new vision.ImageAnnotatorClient({
-  credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON)
-});
+// Read the secret file
+const secretPath = "/etc/secrets/fifa.json";
+const rawData = fs.readFileSync(secretPath, "utf8"); // 🔹 read file as string
+const credentials = JSON.parse(rawData);             // 🔹 parse JSON
+
+// Create Vision client
+const client = new vision.ImageAnnotatorClient({ credentials });
+
+console.log("Loaded Google service account:", credentials.client_email);
 
 app.post("/upload", upload.single("image"), async (req, res) => {
   try {
