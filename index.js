@@ -22,30 +22,11 @@ const upload = multer({
   storage: multer.memoryStorage(), // no disk storage needed
 });
 
-// ---- GOOGLE CLOUD VISION CLIENT SETUP ----
-// Ensure the environment variable exists
-if (!process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
-  throw new Error("Missing GOOGLE_APPLICATION_CREDENTIALS_JSON");
-}
 
-if (process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
-  console.log("Existing GOOGLE_APPLICATION_CREDENTIALS_JSON");
-}
 
-// Write credentials to a temp file (Render-safe)
-fs.writeFileSync(
-  "/tmp/gcp-key.json",
-  process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON
-);
-
-// Create Vision client using the temp file
 const client = new vision.ImageAnnotatorClient({
-  keyFilename: "/tmp/gcp-key.json",
+  credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON)
 });
-
-// Optional: verify file exists
-console.log("GCP key file exists:", fs.existsSync("/tmp/gcp-key.json"));
-console.log("slice:",process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON.slice(0, 30)); // debug
 
 app.post("/upload", upload.single("image"), async (req, res) => {
   try {
