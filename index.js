@@ -28,6 +28,10 @@ if (!process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
   throw new Error("Missing GOOGLE_APPLICATION_CREDENTIALS_JSON");
 }
 
+if (process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
+  console.log("Existing GOOGLE_APPLICATION_CREDENTIALS_JSON");
+}
+
 // Write credentials to a temp file (Render-safe)
 fs.writeFileSync(
   "/tmp/gcp-key.json",
