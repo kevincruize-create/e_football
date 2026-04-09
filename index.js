@@ -45,6 +45,7 @@ const client = new vision.ImageAnnotatorClient({
 
 // Optional: verify file exists
 console.log("GCP key file exists:", fs.existsSync("/tmp/gcp-key.json"));
+console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON.slice(0, 30)); // debug
 
 app.post("/upload", upload.single("image"), async (req, res) => {
   try {
