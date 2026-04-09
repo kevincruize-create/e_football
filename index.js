@@ -18,8 +18,6 @@ const upload = multer({
   storage: multer.memoryStorage(), // no disk storage needed
 });
 
-
-
 // Read the secret file
 const secretPath = "/etc/secrets/fifa.json";
 const rawData = fs.readFileSync(secretPath, "utf8"); // 🔹 read file as string
