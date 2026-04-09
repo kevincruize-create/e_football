@@ -5,6 +5,7 @@ const http = require("http");
 const cors = require("cors");
 const express = require("express");
 const app = express();
+const fs = require("fs");
 const port = process.env.PORT||3001;
 
 app.use(cors());
@@ -15,27 +16,31 @@ const multer = require("multer");
 
 
 
+
+// ---- MULTER SETUP (memory storage) ----
 const upload = multer({
-  storage: multer.memoryStorage(), // 🚀 no disk storage
+  storage: multer.memoryStorage(), // no disk storage needed
 });
-//const sequenceVar = 'Counter Football FC'; // or 'Kevin Team'
 
-
-// 🔐 Ensure credentials exist (FAIL FAST)
+// ---- GOOGLE CLOUD VISION CLIENT SETUP ----
+// Ensure the environment variable exists
 if (!process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON) {
   throw new Error("Missing GOOGLE_APPLICATION_CREDENTIALS_JSON");
 }
 
-const credentials = JSON.parse(
+// Write credentials to a temp file (Render-safe)
+fs.writeFileSync(
+  "/tmp/gcp-key.json",
   process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON
 );
 
-// 🔑 Fix private key formatting
-credentials.private_key = credentials.private_key.replace(/\\n/g, '\n');
-
+// Create Vision client using the temp file
 const client = new vision.ImageAnnotatorClient({
-  credentials,
+  keyFilename: "/tmp/gcp-key.json",
 });
+
+// Optional: verify file exists
+console.log("GCP key file exists:", fs.existsSync("/tmp/gcp-key.json"));
 
 app.post("/upload", upload.single("image"), async (req, res) => {
   try {
