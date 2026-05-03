@@ -47,7 +47,7 @@ app.post("/upload", upload.single("image"), async (req, res) => {
      const response_data = check_all(array, sequenceVar);
 
       res.json({
-      result: response_data,
+      result: response_data.judgement,
 
       });
 
