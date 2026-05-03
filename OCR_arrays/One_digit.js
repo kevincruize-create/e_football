@@ -13,6 +13,9 @@ const sequence = sequenceVar.split(' '); // ['Jay','FC'] or ['Kevin','Team']
 let prevValue = null;
 let nextValue = null;
 let Deciding_value = null
+let declararion = ``
+let judgement = null
+
 
 for (let i = 0; i <= array.length - sequence.length; i++) {
   // Check if the sequence matches at position i
@@ -49,12 +52,53 @@ if(Deciding_value.toString().length == 2)
   if(Deciding_value == nextValue)
   {
      firstDigit = Deciding_value?.[0] ?? null;
+
+     if(firstDigit > Deciding_value?.[1] ?? null)
+    {
+      console.log('winner')
+      declararion = `${sequence.join(' ')} wons with ${firstDigit} scores`
+      judgement = 'win'
+    }
+
+    if(firstDigit < Deciding_value?.[1] ?? null)
+    {
+      declararion = `${sequence.join(' ')} losts with ${firstDigit} scores`
+       judgement = 'loss'
+    }
+
+     if(firstDigit == Deciding_value?.[1] ?? null)
+    {
+      declararion = `${sequence.join(' ')} went on a draw with ${firstDigit} scores`
+       judgement = 'draw'
+    }
   }
 
   if(Deciding_value == prevValue)
   {
      firstDigit = Deciding_value?.[1] ?? null;
+
+    if(firstDigit > Deciding_value?.[0] ?? null)
+    {
+      console.log('winner')
+      declararion = ` ${sequence.join(' ')} won with ${firstDigit} scores`
+       judgement = 'win'
+    }
+
+    if(firstDigit < Deciding_value?.[0] ?? null)
+    {
+      console.log('looser')
+      declararion = ` ${sequence.join(' ')} lost with ${firstDigit} scores`
+       judgement = 'loose'
+    }
+
+        if(firstDigit == Deciding_value?.[0] ?? null)
+    {
+      declararion = `${sequence.join(' ')} went on a draw with ${firstDigit} scores`
+       judgement = 'draw'
+    }
   }
+
+ 
   
 }
 
@@ -65,19 +109,34 @@ if(Deciding_value.toString().length == 3)
        if(Deciding_value == nextValue)
        {
        firstDigit = Deciding_value?.[0] ?? null;
+       
+
        }
  
        if(Deciding_value == prevValue)
        {
         firstDigit = parseInt(Deciding_value % 100);
+
        }
+
+       if(firstDigit == 0)
+      {
+         declararion = ` ${sequence.join(' ')} lost with ${firstDigit} scores`
+          judgement = 'loss'
+      }
+
+         if(firstDigit > 0)
+      {
+         declararion = ` ${sequence.join(' ')} won with ${firstDigit} scores`
+          judgement = 'win'
+      }
   }
 
 
 
   else{
     // add number
-    const inserted = '21'
+    const inserted = '14'
 
     
     const add_number = (array, Deciding_value, sequenceVar, inserted) =>{
@@ -98,7 +157,7 @@ if(Deciding_value.toString().length == 3)
                    !isNaN(array[i + 2]) // ensures it's a number like '210'
                  )  
 
-                  console.log(isMatch ? 'Before instered digit' : 'Not in order')
+                  console.log(isMatch ? 'Before instered digit' : 'Not in order') 
               }
              }
 
@@ -131,21 +190,67 @@ if(Deciding_value.toString().length == 4)
 {
        if(Deciding_value == nextValue)
        {
-       firstDigit = parseInt(Deciding_value.toString().slice(0, 2));
+        firstDigit = parseInt(Deciding_value.toString().slice(0, 2));
+        
+        console.log('0.2',firstDigit)
+        console.log('check', parseInt(Deciding_value % 100))
+
+        if(firstDigit > parseInt(Deciding_value % 100))
+        {
+           declararion = ` ${sequence.join(' ')} won with ${firstDigit} scores`
+            judgement = 'win'
+        }
+
+        if(firstDigit < parseInt(Deciding_value % 100))
+        {
+          declararion = ` ${sequence.join(' ')} lost with ${firstDigit} scores`
+           judgement = 'loss'
+        }
+
+        if(firstDigit == parseInt(Deciding_value % 100))
+        {
+          declararion = ` ${sequence.join(' ')} on draw with ${firstDigit} scores`
+           judgement = 'draw'
+        }
+   
+        
        }
  
        if(Deciding_value == prevValue)
        {
         console.log('prev')
         firstDigit = parseInt(Deciding_value % 100);
+        console.log('100', firstDigit)
+
+            if(firstDigit > parseInt(Deciding_value.toString().slice(0, 2)))
+        {
+           declararion = ` ${sequence.join(' ')} won with ${firstDigit} scores`
+            judgement = 'win'
+        }
+
+        if(firstDigit < parseInt(Deciding_value.toString().slice(0, 2)))
+        {
+          declararion = ` ${sequence.join(' ')} lost with ${firstDigit} scores`
+           judgement = 'loss'
+        }
+
+        if(firstDigit == parseInt(Deciding_value.toString().slice(0, 2)))
+        {
+          declararion = ` ${sequence.join(' ')} on draw with ${firstDigit} scores`
+          judgement = 'draw'
+        }
+
+        
        }
      
 
 }
 
-console.log(`The score for ${sequence} is ${firstDigit}`)
+const final_digit = firstDigit;
 
-return `The score for ${sequence.join(' ')} is ${firstDigit}`;
+console.log(judgement)
+
+return {judgement, declararion, final_digit};
 
 }
 
