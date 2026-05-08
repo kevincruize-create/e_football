@@ -32,7 +32,7 @@ app.post("/upload", upload.single("image"), async (req, res) => {
   try {
 
         //const sequenceVar = 'Devlish Curl'; // ✅ get FC
-        const sequenceVar = req.body.FC; // ✅ get FC
+        const sequenceVar = `${req.body.FC}`; // ✅ get FC
     console.log("FC from frontend:", sequenceVar);
 
     const [result] = await client.textDetection({
