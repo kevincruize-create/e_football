@@ -25,7 +25,8 @@ for (let i = 0; i <= array.length - sequence.length; i++) {
     break; // stop after the first match
   }
 }
-
+console.log('pv', prevValue)
+console.log('Nv', nextValue)
 if( nextValue != null)
 {
    console.log('Next value:', nextValue);
