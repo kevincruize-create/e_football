@@ -44,7 +44,7 @@ app.post("/upload", upload.single("image"), async (req, res) => {
       const fullText = detections[0].description;
       const array = fullText.trim().split(/\s+/);
 
-      console.log('array': array)
+      console.log('array': fullText.trim().split(/\s+/))
 
      const response_data = check_all(array, sequenceVar);
 
