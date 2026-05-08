@@ -39,11 +39,11 @@ if(prevValue != null)
   Deciding_value = prevValue
 }
 
-if(prevValue === null && nextValue === null)
-{
+//if(prevValue === null && nextValue === null)
+//{
  // console.log('invalid team')
-  return 'invalid team'
-}
+  //return 'invalid team'
+//}
 
 
 
