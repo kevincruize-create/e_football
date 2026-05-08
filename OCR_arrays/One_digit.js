@@ -26,13 +26,13 @@ for (let i = 0; i <= array.length - sequence.length; i++) {
   }
 }
 
-if( nextValue !== null)
+if( nextValue != null)
 {
    console.log('Next value:', nextValue);
    Deciding_value = nextValue
 }
 
-if(prevValue !== null)
+if(prevValue != null)
 {
   console.log('Previous value:', prevValue);
   Deciding_value = prevValue
