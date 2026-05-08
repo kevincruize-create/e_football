@@ -46,7 +46,7 @@ if(prevValue != null)
 //}
 
 
-
+console.log(dv, Deciding_value)
 
 if(Deciding_value.toString().length == 2)
 {
