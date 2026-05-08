@@ -46,7 +46,7 @@ if(prevValue != null)
 //}
 
 
-console.log(dv, Deciding_value)
+console.log('dv', Deciding_value)
 
 if(Deciding_value.toString().length == 2)
 {
@@ -249,7 +249,7 @@ if(Deciding_value.toString().length == 4)
 
 const final_digit = firstDigit;
 
-console.log(judgement)
+console.log('jj',judgement)
 
 return {judgement, declararion, final_digit};
 
