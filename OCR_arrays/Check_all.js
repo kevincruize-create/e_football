@@ -14,6 +14,8 @@ const process = (array, sequenceVar) => {
     array.splice(0, 1);
   }
 
+  console.log('new_array', array)
+
   // 2. Count numeric values AFTER cleanup
   const integerCount = array.filter(item =>
     Number.isInteger(Number(item))
