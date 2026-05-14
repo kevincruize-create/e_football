@@ -27,6 +27,7 @@ for (let i = 0; i <= array.length - sequence.length; i++) {
 }
 console.log('ss', sequence, sequenceVar)
 console.log('Nv', nextValue)
+console.log('pv', prevValue)
 if( nextValue != null)
 {
    console.log('Next value:', nextValue);
