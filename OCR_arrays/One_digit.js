@@ -36,7 +36,8 @@ if( nextValue != null)
 if(prevValue != null)
 {
   console.log('Previous value:', prevValue);
-  Deciding_value = prevValue
+  Deciding_value = prevValue;
+  console.log('dv_another', Deciding_value)
 }
 
 //if(prevValue === null && nextValue === null)
@@ -46,7 +47,7 @@ if(prevValue != null)
 //}
 
 
-console.log('dv_another', Deciding_value)
+
 
 if(Deciding_value.toString().length == 2)
 {
