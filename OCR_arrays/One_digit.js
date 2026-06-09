@@ -22,7 +22,7 @@ for (let i = 0; i <= array.length - sequence.length; i++) {
   if (sequence.every((v, j) => array[i + j] === v)) { // ✅ use array, not arr
     prevValue = i > 0 ? array[i - 1] : null;              // element before the sequence
     nextValue = array[i + sequence.length] ?? null;       // element after the sequence
-    console.log(array[i + sequence.length] ?? null);
+    console.log('next', array[i + sequence.length] ?? null);
     break; // stop after the first match
   }
 }
