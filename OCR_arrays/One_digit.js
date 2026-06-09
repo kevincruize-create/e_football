@@ -22,10 +22,11 @@ for (let i = 0; i <= array.length - sequence.length; i++) {
   if (sequence.every((v, j) => array[i + j] === v)) { // ✅ use array, not arr
     prevValue = i > 0 ? array[i - 1] : null;              // element before the sequence
     nextValue = array[i + sequence.length] ?? null;       // element after the sequence
+    console.log(array[i + sequence.length] ?? null)
     break; // stop after the first match
   }
 }
-console.log('ss', sequence, sequenceVar)
+console.log('ss', sequenceVar)
 console.log('Nv', nextValue)
 console.log('pv', prevValue)
 if( nextValue != null)
